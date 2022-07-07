@@ -87,18 +87,28 @@ def getBRData():
         print('File saved. See:', completeName)
 
         print('*******************************')
-        # getImages(json_object)
-        # getUsers(json_object)
-        # getLocations(json_object)
 
-        # Terminal output
-        print_response = input('Do you wanna see the results in the terminal? (y/n)\n> ')
+        specific = input('Do you wanna see some specific data? (y/n)\n> ')
 
-        if print_response == 'y':
-            # Printing the response
-            print(json.dumps(json_object, indent=4))
-        else:
-            print('Quitting...')
+        if specific == 'y':
+            print("Choose an option:\n"
+                  "1. Get images\n"
+                  "2. Get usernames\n"
+                  "3. Get user locations\n"
+                  "4. See the full output")
+
+            option = input('> ')
+
+            if option == '1':
+                getImages(json_object)
+            elif option == '2':
+                getUsers(json_object)
+            elif option == '3':
+                getLocations(json_object)
+            elif option == '4':
+                print(json.dumps(json_object, indent=4))
+            else:
+                print('Quitting...')
 
     elif response.status_code == 404:
         print('Update your access token')
@@ -111,16 +121,14 @@ def getImages(json_object):
     dataset = []
     for key in json_object:
         dataset.append([key['userName'], [key['photoURL'], key['secondaryPhotoURL']]])
-    print(dataset)
-    print('Images fetched')
+    print('Images fetched\n' + json.dumps(dataset, indent=4))
 
 
 def getUsers(json_object):
     dataset = []
     for key in json_object:
         dataset.append([key['userName']])
-    print(dataset)
-    print('Users fetched')
+    print('Users fetched\n' + json.dumps(dataset, indent=4))
 
 
 def getLocations(json_object):
@@ -128,8 +136,7 @@ def getLocations(json_object):
     for key in json_object:
         if 'location' in key:
             dataset.append([key['userName'], key.get('location')])
-    print(dataset)
-    print('Locations fetched')
+    print('Locations fetched\n' + json.dumps(dataset, indent=4))
 
 
 if __name__ == '__main__':
