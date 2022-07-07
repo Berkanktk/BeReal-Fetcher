@@ -106,7 +106,7 @@ def getBRData():
             elif option == '3':
                 getLocations(json_object)
             elif option == '4':
-                print(json.dumps(json_object, indent=4))
+                getFullOutput(json_object)
             else:
                 print('Quitting...')
 
@@ -137,6 +137,10 @@ def getLocations(json_object):
         if 'location' in key:
             dataset.append([key['userName'], key.get('location')])
     print('Locations fetched\n' + json.dumps(dataset, indent=4))
+
+
+def getFullOutput(json_object):
+    print(json.dumps(json_object, indent=4))
 
 
 if __name__ == '__main__':
