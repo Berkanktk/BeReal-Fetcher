@@ -86,6 +86,11 @@ def getBRData():
             outfile.writelines(json.dumps(json_object, indent=4))
         print('File saved. See:', completeName)
 
+        print('*******************************')
+        # getImages(json_object)
+        # getUsers(json_object)
+        # getLocations(json_object)
+
         # Terminal output
         print_response = input('Do you wanna see the results in the terminal? (y/n)\n> ')
 
@@ -100,6 +105,31 @@ def getBRData():
         # print(json.dumps(json_object, indent=4))
     else:
         print('An error has occurred.')
+
+
+def getImages(json_object):
+    dataset = []
+    for key in json_object:
+        dataset.append([key['userName'], [key['photoURL'], key['secondaryPhotoURL']]])
+    print(dataset)
+    print('Images fetched')
+
+
+def getUsers(json_object):
+    dataset = []
+    for key in json_object:
+        dataset.append([key['userName']])
+    print(dataset)
+    print('Users fetched')
+
+
+def getLocations(json_object):
+    dataset = []
+    for key in json_object:
+        if 'location' in key:
+            dataset.append([key['userName'], key.get('location')])
+    print(dataset)
+    print('Locations fetched')
 
 
 if __name__ == '__main__':
