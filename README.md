@@ -9,8 +9,7 @@ A simple script to scrape data from BeReal without posting anything.
    1. The user is also prompted by the terminal in case an output inside the terminal is wanted.
 
 ### How it works
-When the `main` method is run, the `getBRData()` method is called, which then calls `getAuth()` in order to fetch the access token needed in order for the `getBRData()` to send a http response with authentication to get the data from BeReal.  
-
+When the `main` method is run, the `getBRData()` method is called, which then calls `getAuth()` in order to fetch the access token needed for the method to send a http response with authentication to get the JSON data from BeReal. 
 ## BeReal Endpoints
 ### /api/feeds/discovery
 Posts of users who choose to make their posts public 
