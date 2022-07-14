@@ -1,6 +1,15 @@
 # BeReal Data Fetcher
 A simple script to scrape data from BeReal without posting anything.
 
+This tool will gather the following data in a JSON format from your Dashboard by default:
+- Posted pictures (Primary and secondary)
+- Location details
+- Realmojis and comments made on a post
+- Information about if a post was late or not
+- User region
+- Time posted
+- And many other user specific things
+
 ## Running the Script
 1. Make a copy of the `.env.example` with the name `.env`
 2. Fill in data inside the `.env` file. (Charles Proxy from the App Store is recommended)
