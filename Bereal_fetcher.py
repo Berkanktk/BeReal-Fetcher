@@ -16,7 +16,7 @@ SECURE_TOKEN = os.getenv('SECURE_TOKEN')
 urllib3.disable_warnings()
 
 
-def getAuth():
+def get_auth():
     # Preparing payload
     headers = {
         'Host': 'securetoken.googleapis.com',
@@ -46,10 +46,10 @@ def getAuth():
     return token
 
 
-def getBRData():
+def fetch_data():
     # Fetching the access token
     print('Fetching access token...')
-    access_token = getAuth()
+    access_token = get_auth()
 
     # Preparing payload
     print('Preparing Payload...')
@@ -65,7 +65,7 @@ def getBRData():
         'limit': '20',
     }
 
-    # Creating response
+    # Sending response
     print('Sending response...')
     response = requests.get('https://mobile.bereal.com/api/feeds/friends', headers=headers, params=params, verify=False)
 
@@ -75,16 +75,16 @@ def getBRData():
     # File data
     name_of_file = str(datetime.datetime.now().strftime("%Y-%m-%d-%H.%M"))
     save_path = './results/'
-    completeName = os.path.join(save_path, name_of_file + ".json")
+    complete_name = os.path.join(save_path, name_of_file + ".json")
 
     if response.status_code == 200:
         print('Successfully fetched data...')
 
         # Write the response to a file
         print('Writing to file...')
-        with open(completeName, 'w') as outfile:
+        with open(complete_name, 'w') as outfile:
             outfile.writelines(json.dumps(json_object, indent=4))
-        print('File saved. See:', completeName)
+        print('File saved. See:', complete_name)
 
         print('*******************************')
 
@@ -100,13 +100,13 @@ def getBRData():
             option = input('> ')
 
             if option == '1':
-                getImages(json_object)
+                get_images(json_object)
             elif option == '2':
-                getUsers(json_object)
+                get_users(json_object)
             elif option == '3':
-                getLocations(json_object)
+                get_locations(json_object)
             elif option == '4':
-                getFullOutput(json_object)
+                get_full_output(json_object)
             else:
                 print('Quitting...')
 
@@ -117,21 +117,21 @@ def getBRData():
         print('An error has occurred.')
 
 
-def getImages(json_object):
+def get_images(json_object):
     dataset = []
     for key in json_object:
         dataset.append([key['userName'], [key['photoURL'], key['secondaryPhotoURL']]])
     print('Images fetched\n' + json.dumps(dataset, indent=4))
 
 
-def getUsers(json_object):
+def get_users(json_object):
     dataset = []
     for key in json_object:
         dataset.append([key['userName']])
     print('Users fetched\n' + json.dumps(dataset, indent=4))
 
 
-def getLocations(json_object):
+def get_locations(json_object):
     dataset = []
     for key in json_object:
         if 'location' in key:
@@ -139,10 +139,10 @@ def getLocations(json_object):
     print('Locations fetched\n' + json.dumps(dataset, indent=4))
 
 
-def getFullOutput(json_object):
+def get_full_output(json_object):
     print(json.dumps(json_object, indent=4))
 
 
 if __name__ == '__main__':
     print('Starting script...')
-    getBRData()
+    fetch_data()
