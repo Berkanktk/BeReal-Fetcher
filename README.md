@@ -19,7 +19,16 @@ This tool will gather the following data in a JSON format from your Dashboard by
 
 ### How it works
 When the `main` method is run, the `getBRData()` method is called, which then calls `getAuth()` in order to fetch the access token needed for the method to send a http response with authentication to get the JSON data from BeReal. 
+
 ## BeReal Endpoints
+In case you want to use a specific endpoint, simply change it inside the Bereal_fetcher.py script at line 70. 
+
+**Example**:  
+From the /friends endpoint   
+`response = requests.get('https://mobile.bereal.com/api/feeds/friends', headers=headers, params=params, verify=False)`
+
+to the /memories endpoint  
+`response = requests.get('https://mobile.bereal.com/api/feeds/memories', headers=headers, params=params, verify=False)`
 ### /api/feeds/discovery
 Posts of users who choose to make their posts public 
 ### /api/feeds/friends
@@ -28,3 +37,5 @@ Posts of users who are connected with the user
 Shows contact data 
 ### /friendSuggestions
 Shows data about the profiles under the suggestions tab
+### /memories
+Shows all your memories
