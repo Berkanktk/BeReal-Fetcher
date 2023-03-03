@@ -9,7 +9,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # Add contents from the .env file
-REQUEST_TOKEN = os.getenv('REQUEST_TOKEN')
+REFRESH_TOKEN = os.getenv('REFRESH_TOKEN')
 SECURE_TOKEN = os.getenv('SECURE_TOKEN')
 
 # Disable log warnings
@@ -26,7 +26,7 @@ def get_auth():
 
     body = {
         "grantType": "refresh_token",
-        "refreshToken": REQUEST_TOKEN
+        "refreshToken": REFRESH_TOKEN
     }
 
     # Create response
