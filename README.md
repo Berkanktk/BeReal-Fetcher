@@ -26,15 +26,15 @@ Charles Proxy is a tool that can be used to intercept and modify HTTP requests a
 To get the `REFRESH_TOKEN` and `SECURE_TOKEN` used withing the `.env` file, you need to intercept the request that is sent to the BeReal API. This can be done by using Charles Proxy.
 
 ## How to use Charles Proxy
-1. Download Charles Proxy from the App Store
-2. Open the app and click on the `Settings` button in the top left corner
-3. Click on `SSL Proxying` and enable it
+1. Download Charles Proxy from the App Store.
+2. Open the app and click on the `Settings` button in the top left corner.
+3. Click on `SSL Proxying` and enable it.
 4. You can also create a CA certificate if you want. Just follow the instructions on the screen.
 5. Go back to the main screen and click on the `Status` button to start recording the traffic.
 6. Open the BeReal app and click around a bit. 
 7. Go back to the main screen and click on the `Status` button to stop recording the traffic.
 8. Now, go into the recorded session and locate https://securetoken.googleapis.com.
-9. Click on the request and copy the URL the overview tab. This is the `SECURE_TOKEN`
+9. Click on the request and copy the URL from the overview tab. This is the `SECURE_TOKEN`.
 10. Next, go to the bottom of the same page and find the Request Body tab, and click on "View Body". The refreshToken here is the `REQUEST_TOKEN` you should insert into the `.env` file.
 
 ## BeReal Endpoints
