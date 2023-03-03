@@ -20,7 +20,7 @@ This tool will gather the following data in a JSON format from your Dashboard by
 ### How it works
 When the `main` method is run, the `getBRData()` method is called, which then calls `getAuth()` in order to fetch the access token needed for the method to send a http response with authentication to get the JSON data from BeReal. 
 
-# Charles Proxy (Getting the reqyired tokens)
+# Charles Proxy (Getting the required tokens)
 Charles Proxy is a tool that can be used to intercept and modify HTTP requests and responses. It is a great tool to use when you want to see what is going on behind the scenes of an app.
 
 To get the `REFRESH_TOKEN` and `SECURE_TOKEN` used withing the `.env` file, you need to intercept the request that is sent to the BeReal API. This can be done by using Charles Proxy.
