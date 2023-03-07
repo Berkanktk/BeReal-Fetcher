@@ -35,7 +35,7 @@ To get the `REFRESH_TOKEN` and `SECURE_TOKEN` used withing the `.env` file, you 
 7. Go back to the main screen and click on the `Status` button to stop recording the traffic.
 8. Now, go into the recorded session and locate https://securetoken.googleapis.com.
 9. Click on the request and copy the URL from the overview tab. This is the `SECURE_TOKEN`.
-10. Next, go to the bottom of the same page and find the Request Body tab, and click on "View Body". The refreshToken here is the `REQUEST_TOKEN` you should insert into the `.env` file.
+10. Next, go to the bottom of the same page and find the Request Body tab, and click on "View Body". The refreshToken here is the `REFRESH_TOKEN` you should insert into the `.env` file.
 
 ## BeReal Endpoints
 In case you want to use a specific endpoint, simply change it inside the Bereal_fetcher.py script at line 70. 
